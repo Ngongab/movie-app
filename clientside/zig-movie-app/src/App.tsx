@@ -1,22 +1,18 @@
-import React, { Component } from 'react';
-import './App.css';
-import Description from './Description';
-import Header from './Header';
-import logo from './logo.svg';
+import React from "react";
+import "./App.css";
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import Home from "./views/Home";
+import DetailsView from "./views/Details";
 
-class App extends React.Component {
-  public render() {
-    return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <Header name="CODER" />
-        </header>
-        <Description countBy={3} />
-      </div>
-    );
-  }
-}
-
+const App: React.FC = () => {
+  return (
+    <Router>
+      <Routes>
+        <Route path="/movies/:id" element={<DetailsView />} />
+        <Route path="/" element={<Home />} />
+      </Routes>
+    </Router>
+  );
+};
 
 export default App;
